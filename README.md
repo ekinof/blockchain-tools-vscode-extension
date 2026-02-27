@@ -1,71 +1,45 @@
-# blockchain-tools README
+# Blockchain Tools
 
-This is the README for your extension "blockchain-tools". After writing up a brief description, we recommend including the following sections.
+**Blockchain Tools** is a VS Code extension that helps developers working with blockchain applications by providing quick generation and validation of blockchain-related data — directly from the editor.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+### Ethereum (ERC20)
+- **Generate Address** — Insert a random checksummed Ethereum address (EIP-55)
+- **Checksum Address** — Verify EIP-55 checksum of selected address
+- **Toggle Address Case** — Convert between lowercase and EIP-55 checksummed form
+- **Generate TxHash** — Insert a random Ethereum transaction hash (`0x` + 64 hex chars)
+- **Validate TxHash** — Verify transaction hash format
 
-For example if there is an image subfolder under your extension project workspace:
+### Bitcoin
+- **Generate Address** — Create random Bitcoin addresses (P2PKH, P2SH, or Bech32 — configurable)
+- **Validate Address** — Check Bitcoin address validity
+- **Generate TxHash** — Insert a random Bitcoin transaction hash (64 hex chars)
+- **Validate TxHash** — Verify Bitcoin transaction hash format
 
-\!\[feature X\]\(images/feature-x.png\)
+### Solana
+- **Generate Address** — Create random Solana addresses (Base58-encoded 32 bytes)
+- **Validate Address** — Verify Solana address format
+- **Generate Signature** — Insert random Solana transaction signatures (Base58-encoded 64 bytes)
+- **Validate Signature** — Check Solana signature validity
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+## Usage
 
-## Requirements
+Access all tools via:
+- **Keyboard**: `Ctrl+Alt+Shift+B` (`Cmd+Alt+Shift+B` on macOS) — opens the action menu
+- **Command Palette**: Search for `Blockchain Tools` to see all individual commands
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+All generated data is cryptographically random and suitable for testing purposes.
 
 ## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+| Setting | Type | Default | Description |
+|---------|------|---------|-------------|
+| `blockchainTools.quoteStyle` | `"none"` \| `"single"` \| `"double"` | `"none"` | Wrap generated values in quotes |
+| `blockchainTools.include0xPrefix` | boolean | `true` | Include `0x` prefix in ETH addresses and hashes |
+| `blockchainTools.btcAddressType` | `"P2PKH"` \| `"P2SH"` \| `"Bech32"` | `"P2PKH"` | Bitcoin address format to generate |
+| `blockchainTools.enabledBlockchains` | object | `{eth,btc,sol: true}` | Enable/disable blockchains in the menu |
 
-For example:
+## Installation
 
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+Install via the VS Code Marketplace — search for **Blockchain Tools**.

@@ -1,26 +1,38 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 
-// This method is called when your extension is activated
-// Your extension is activated the very first time the command is executed
-export function activate(context: vscode.ExtensionContext) {
+import { register as registerMenu } from './commands/menu.js';
+import { register as registerEthGenerateAddress } from './commands/eth/generateAddress.js';
+import { register as registerEthChecksumAddress } from './commands/eth/checksumAddress.js';
+import { register as registerEthToggleCase } from './commands/eth/toggleCase.js';
+import { register as registerEthGenerateTxHash } from './commands/eth/generateTxHash.js';
+import { register as registerEthValidateTxHash } from './commands/eth/validateTxHash.js';
+import { register as registerBtcGenerateAddress } from './commands/btc/generateAddress.js';
+import { register as registerBtcValidateAddress } from './commands/btc/validateAddress.js';
+import { register as registerBtcGenerateTxHash } from './commands/btc/generateTxHash.js';
+import { register as registerBtcValidateTxHash } from './commands/btc/validateTxHash.js';
+import { register as registerSolGenerateAddress } from './commands/sol/generateAddress.js';
+import { register as registerSolValidateAddress } from './commands/sol/validateAddress.js';
+import { register as registerSolGenerateSignature } from './commands/sol/generateSignature.js';
+import { register as registerSolValidateSignature } from './commands/sol/validateSignature.js';
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "blockchain-tools" is now active!');
+export function activate(context: vscode.ExtensionContext): void {
+    registerMenu(context);
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
-	const disposable = vscode.commands.registerCommand('blockchain-tools.helloWorld', () => {
-		// The code you place here will be executed every time your command is executed
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from blockchain-tools!');
-	});
+    registerEthGenerateAddress(context);
+    registerEthChecksumAddress(context);
+    registerEthToggleCase(context);
+    registerEthGenerateTxHash(context);
+    registerEthValidateTxHash(context);
 
-	context.subscriptions.push(disposable);
+    registerBtcGenerateAddress(context);
+    registerBtcValidateAddress(context);
+    registerBtcGenerateTxHash(context);
+    registerBtcValidateTxHash(context);
+
+    registerSolGenerateAddress(context);
+    registerSolValidateAddress(context);
+    registerSolGenerateSignature(context);
+    registerSolValidateSignature(context);
 }
 
-// This method is called when your extension is deactivated
-export function deactivate() {}
+export function deactivate(): void {}

@@ -1,40 +1,179 @@
 {
   "name": "blockchain-tools",
   "displayName": "Blockchain Tools",
-  "description": "Blockchain Tools to generate address, hashes, ...",
+  "description": "Generate and validate Ethereum, Bitcoin, and Solana addresses, transaction hashes, and signatures.",
   "version": "0.0.1",
+  "publisher": "ekinof",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ekinof/blockchain-tools-vscode-extension"
+  },
+  "keywords": [
+    "blockchain",
+    "ethereum",
+    "bitcoin",
+    "solana",
+    "erc20",
+    "crypto",
+    "address",
+    "web3"
+  ],
   "engines": {
     "vscode": "^1.109.0"
   },
   "categories": [
     "Other"
   ],
+  "type": "module",
   "activationEvents": [],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "blockchain-tools.helloWorld",
-        "title": "Hello World"
+        "command": "blockchain-tools.openMenu",
+        "title": "Blockchain Tools: Open Menu"
+      },
+      {
+        "command": "blockchain-tools.eth.generateAddress",
+        "title": "Blockchain Tools: Generate ETH Address"
+      },
+      {
+        "command": "blockchain-tools.eth.checksumAddress",
+        "title": "Blockchain Tools: Checksum ETH Address"
+      },
+      {
+        "command": "blockchain-tools.eth.toggleCase",
+        "title": "Blockchain Tools: Toggle ETH Address Case"
+      },
+      {
+        "command": "blockchain-tools.eth.generateTxHash",
+        "title": "Blockchain Tools: Generate ETH TxHash"
+      },
+      {
+        "command": "blockchain-tools.eth.validateTxHash",
+        "title": "Blockchain Tools: Validate ETH TxHash"
+      },
+      {
+        "command": "blockchain-tools.btc.generateAddress",
+        "title": "Blockchain Tools: Generate BTC Address"
+      },
+      {
+        "command": "blockchain-tools.btc.validateAddress",
+        "title": "Blockchain Tools: Validate BTC Address"
+      },
+      {
+        "command": "blockchain-tools.btc.generateTxHash",
+        "title": "Blockchain Tools: Generate BTC TxHash"
+      },
+      {
+        "command": "blockchain-tools.btc.validateTxHash",
+        "title": "Blockchain Tools: Validate BTC TxHash"
+      },
+      {
+        "command": "blockchain-tools.sol.generateAddress",
+        "title": "Blockchain Tools: Generate SOL Address"
+      },
+      {
+        "command": "blockchain-tools.sol.validateAddress",
+        "title": "Blockchain Tools: Validate SOL Address"
+      },
+      {
+        "command": "blockchain-tools.sol.generateSignature",
+        "title": "Blockchain Tools: Generate SOL Signature"
+      },
+      {
+        "command": "blockchain-tools.sol.validateSignature",
+        "title": "Blockchain Tools: Validate SOL Signature"
       }
-    ]
+    ],
+    "keybindings": [
+      {
+        "command": "blockchain-tools.openMenu",
+        "key": "ctrl+alt+shift+b",
+        "mac": "cmd+alt+shift+b",
+        "when": "editorTextFocus"
+      }
+    ],
+    "configuration": {
+      "title": "Blockchain Tools",
+      "properties": {
+        "blockchainTools.quoteStyle": {
+          "type": "string",
+          "enum": [
+            "none",
+            "single",
+            "double"
+          ],
+          "default": "none",
+          "description": "Wrap generated values in quotes when inserting at cursor."
+        },
+        "blockchainTools.include0xPrefix": {
+          "type": "boolean",
+          "default": true,
+          "description": "Include 0x prefix in generated Ethereum addresses and transaction hashes."
+        },
+        "blockchainTools.btcAddressType": {
+          "type": "string",
+          "enum": [
+            "P2PKH",
+            "P2SH",
+            "Bech32"
+          ],
+          "default": "P2PKH",
+          "description": "Bitcoin address format to generate (P2PKH = legacy 1..., P2SH = 3..., Bech32 = bc1...)."
+        },
+        "blockchainTools.enabledBlockchains": {
+          "type": "object",
+          "default": {
+            "eth": true,
+            "btc": true,
+            "sol": true
+          },
+          "description": "Enable or disable blockchains in the Open Menu quick pick.",
+          "properties": {
+            "eth": {
+              "type": "boolean",
+              "default": true
+            },
+            "btc": {
+              "type": "boolean",
+              "default": true
+            },
+            "sol": {
+              "type": "boolean",
+              "default": true
+            }
+          }
+        }
+      }
+    }
   },
   "scripts": {
-    "vscode:prepublish": "pnpm run compile",
+    "vscode:prepublish": "node esbuild.mjs --production",
     "compile": "tsc -p ./",
+    "bundle": "node esbuild.mjs",
     "watch": "tsc -watch -p ./",
     "pretest": "pnpm run compile && pnpm run lint",
     "lint": "eslint src",
-    "test": "vscode-test"
+    "test": "vscode-test",
+    "package": "vsce package --no-dependencies",
+    "publish": "vsce publish --no-dependencies"
   },
   "devDependencies": {
-    "@types/vscode": "^1.109.0",
     "@types/mocha": "^10.0.10",
     "@types/node": "22.x",
-    "typescript-eslint": "^8.54.0",
+    "@types/vscode": "^1.109.0",
+    "@vscode/test-cli": "^0.0.12",
+    "@vscode/test-electron": "^2.5.2",
+    "@vscode/vsce": "^3.7.1",
+    "esbuild": "^0.27.3",
     "eslint": "^9.39.2",
     "typescript": "^5.9.3",
-    "@vscode/test-cli": "^0.0.12",
-    "@vscode/test-electron": "^2.5.2"
+    "typescript-eslint": "^8.54.0"
+  },
+  "dependencies": {
+    "@noble/hashes": "^2.0.1",
+    "@scure/base": "^2.0.0"
   }
 }
