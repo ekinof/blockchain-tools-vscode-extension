@@ -2,7 +2,7 @@
 
 **Date:** 2026-02-27
 **Status:** Draft
-**Source:** Ported from `blockchain-tools-intellij-platform-plugin`
+**Source:** Ported from `crypto-blockchain-tools-intellij-platform-plugin`
 
 ---
 
@@ -21,35 +21,35 @@ individual commands.
 
 | # | Command ID | Action |
 |---|------------|--------|
-| 1 | `blockchain-tools.eth.generateAddress` | Insert a random EIP-55 checksummed Ethereum address at cursor |
-| 2 | `blockchain-tools.eth.checksumAddress` | Verify EIP-55 checksum of selected text → status bar / notification |
-| 3 | `blockchain-tools.eth.toggleCase` | Toggle selected address between lowercase and EIP-55 checksummed form |
-| 4 | `blockchain-tools.eth.generateTxHash` | Insert a random ETH transaction hash (`0x` + 64 hex chars) at cursor |
-| 5 | `blockchain-tools.eth.validateTxHash` | Verify selected text is a valid ETH transaction hash → notification |
+| 1 | `crypto-blockchain-tools.eth.generateAddress` | Insert a random EIP-55 checksummed Ethereum address at cursor |
+| 2 | `crypto-blockchain-tools.eth.checksumAddress` | Verify EIP-55 checksum of selected text → status bar / notification |
+| 3 | `crypto-blockchain-tools.eth.toggleCase` | Toggle selected address between lowercase and EIP-55 checksummed form |
+| 4 | `crypto-blockchain-tools.eth.generateTxHash` | Insert a random ETH transaction hash (`0x` + 64 hex chars) at cursor |
+| 5 | `crypto-blockchain-tools.eth.validateTxHash` | Verify selected text is a valid ETH transaction hash → notification |
 
 ### Bitcoin
 
 | # | Command ID | Action |
 |---|------------|--------|
-| 6 | `blockchain-tools.btc.generateAddress` | Insert a random Bitcoin address (P2PKH, P2SH, or Bech32 — configurable) |
-| 7 | `blockchain-tools.btc.validateAddress` | Verify selected text is a valid Bitcoin address → notification |
-| 8 | `blockchain-tools.btc.generateTxHash` | Insert a random Bitcoin transaction hash (64 hex chars) at cursor |
-| 9 | `blockchain-tools.btc.validateTxHash` | Verify selected text is a valid Bitcoin transaction hash → notification |
+| 6 | `crypto-blockchain-tools.btc.generateAddress` | Insert a random Bitcoin address (P2PKH, P2SH, or Bech32 — configurable) |
+| 7 | `crypto-blockchain-tools.btc.validateAddress` | Verify selected text is a valid Bitcoin address → notification |
+| 8 | `crypto-blockchain-tools.btc.generateTxHash` | Insert a random Bitcoin transaction hash (64 hex chars) at cursor |
+| 9 | `crypto-blockchain-tools.btc.validateTxHash` | Verify selected text is a valid Bitcoin transaction hash → notification |
 
 ### Solana
 
 | # | Command ID | Action |
 |---|------------|--------|
-| 10 | `blockchain-tools.sol.generateAddress` | Insert a random Solana address (Base58-encoded 32 bytes) at cursor |
-| 11 | `blockchain-tools.sol.validateAddress` | Verify selected text is a valid Solana address → notification |
-| 12 | `blockchain-tools.sol.generateSignature` | Insert a random Solana transaction signature (Base58-encoded 64 bytes) |
-| 13 | `blockchain-tools.sol.validateSignature` | Verify selected text is a valid Solana signature → notification |
+| 10 | `crypto-blockchain-tools.sol.generateAddress` | Insert a random Solana address (Base58-encoded 32 bytes) at cursor |
+| 11 | `crypto-blockchain-tools.sol.validateAddress` | Verify selected text is a valid Solana address → notification |
+| 12 | `crypto-blockchain-tools.sol.generateSignature` | Insert a random Solana transaction signature (Base58-encoded 64 bytes) |
+| 13 | `crypto-blockchain-tools.sol.validateSignature` | Verify selected text is a valid Solana signature → notification |
 
 ### Menu
 
 | Command ID | Action |
 |------------|--------|
-| `blockchain-tools.openMenu` | Open Quick Pick with all actions grouped by blockchain |
+| `crypto-blockchain-tools.openMenu` | Open Quick Pick with all actions grouped by blockchain |
 
 ---
 
@@ -206,7 +206,7 @@ replaceSelection(editor, text): void
 
 ## Menu (Quick Pick)
 
-`blockchain-tools.openMenu` opens a `vscode.window.showQuickPick` with items:
+`crypto-blockchain-tools.openMenu` opens a `vscode.window.showQuickPick` with items:
 
 ```
 ─── Ethereum ───────────────────────
@@ -238,24 +238,24 @@ Disabled blockchains (from settings) are omitted from the menu.
 ```json
 "contributes": {
   "commands": [
-    { "command": "blockchain-tools.openMenu",              "title": "Blockchain Tools: Open Menu" },
-    { "command": "blockchain-tools.eth.generateAddress",   "title": "Blockchain Tools: Generate ETH Address" },
-    { "command": "blockchain-tools.eth.checksumAddress",   "title": "Blockchain Tools: Checksum ETH Address" },
-    { "command": "blockchain-tools.eth.toggleCase",        "title": "Blockchain Tools: Toggle ETH Address Case" },
-    { "command": "blockchain-tools.eth.generateTxHash",    "title": "Blockchain Tools: Generate ETH TxHash" },
-    { "command": "blockchain-tools.eth.validateTxHash",    "title": "Blockchain Tools: Validate ETH TxHash" },
-    { "command": "blockchain-tools.btc.generateAddress",   "title": "Blockchain Tools: Generate BTC Address" },
-    { "command": "blockchain-tools.btc.validateAddress",   "title": "Blockchain Tools: Validate BTC Address" },
-    { "command": "blockchain-tools.btc.generateTxHash",    "title": "Blockchain Tools: Generate BTC TxHash" },
-    { "command": "blockchain-tools.btc.validateTxHash",    "title": "Blockchain Tools: Validate BTC TxHash" },
-    { "command": "blockchain-tools.sol.generateAddress",   "title": "Blockchain Tools: Generate SOL Address" },
-    { "command": "blockchain-tools.sol.validateAddress",   "title": "Blockchain Tools: Validate SOL Address" },
-    { "command": "blockchain-tools.sol.generateSignature", "title": "Blockchain Tools: Generate SOL Signature" },
-    { "command": "blockchain-tools.sol.validateSignature", "title": "Blockchain Tools: Validate SOL Signature" }
+    { "command": "crypto-blockchain-tools.openMenu",              "title": "Blockchain Tools: Open Menu" },
+    { "command": "crypto-blockchain-tools.eth.generateAddress",   "title": "Blockchain Tools: Generate ETH Address" },
+    { "command": "crypto-blockchain-tools.eth.checksumAddress",   "title": "Blockchain Tools: Checksum ETH Address" },
+    { "command": "crypto-blockchain-tools.eth.toggleCase",        "title": "Blockchain Tools: Toggle ETH Address Case" },
+    { "command": "crypto-blockchain-tools.eth.generateTxHash",    "title": "Blockchain Tools: Generate ETH TxHash" },
+    { "command": "crypto-blockchain-tools.eth.validateTxHash",    "title": "Blockchain Tools: Validate ETH TxHash" },
+    { "command": "crypto-blockchain-tools.btc.generateAddress",   "title": "Blockchain Tools: Generate BTC Address" },
+    { "command": "crypto-blockchain-tools.btc.validateAddress",   "title": "Blockchain Tools: Validate BTC Address" },
+    { "command": "crypto-blockchain-tools.btc.generateTxHash",    "title": "Blockchain Tools: Generate BTC TxHash" },
+    { "command": "crypto-blockchain-tools.btc.validateTxHash",    "title": "Blockchain Tools: Validate BTC TxHash" },
+    { "command": "crypto-blockchain-tools.sol.generateAddress",   "title": "Blockchain Tools: Generate SOL Address" },
+    { "command": "crypto-blockchain-tools.sol.validateAddress",   "title": "Blockchain Tools: Validate SOL Address" },
+    { "command": "crypto-blockchain-tools.sol.generateSignature", "title": "Blockchain Tools: Generate SOL Signature" },
+    { "command": "crypto-blockchain-tools.sol.validateSignature", "title": "Blockchain Tools: Validate SOL Signature" }
   ],
   "keybindings": [
     {
-      "command": "blockchain-tools.openMenu",
+      "command": "crypto-blockchain-tools.openMenu",
       "key": "ctrl+alt+shift+b",
       "mac": "cmd+alt+shift+b",
       "when": "editorTextFocus"

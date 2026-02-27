@@ -4,7 +4,7 @@ import { createValidateCommand } from '../../util/insertUtil.js';
 
 export function register(context: vscode.ExtensionContext): void {
     context.subscriptions.push(createValidateCommand(
-        'blockchain-tools.eth.validateTxHash',
+        'crypto-blockchain-tools.eth.validateTxHash',
         'Select an Ethereum transaction hash first',
         isValidTxHash,
         '✓ Valid ETH transaction hash',

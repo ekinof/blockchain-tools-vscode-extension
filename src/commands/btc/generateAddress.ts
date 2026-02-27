@@ -4,7 +4,7 @@ import { insertAtCursor } from '../../util/insertUtil.js';
 
 export function register(context: vscode.ExtensionContext): void {
     context.subscriptions.push(
-        vscode.commands.registerCommand('blockchain-tools.btc.generateAddress', () => {
+        vscode.commands.registerCommand('crypto-blockchain-tools.btc.generateAddress', () => {
             const editor = vscode.window.activeTextEditor;
             if (!editor) { return; }
             const cfg = vscode.workspace.getConfiguration('blockchainTools');

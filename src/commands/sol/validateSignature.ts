@@ -4,7 +4,7 @@ import { createValidateCommand } from '../../util/insertUtil.js';
 
 export function register(context: vscode.ExtensionContext): void {
     context.subscriptions.push(createValidateCommand(
-        'blockchain-tools.sol.validateSignature',
+        'crypto-blockchain-tools.sol.validateSignature',
         'Select a Solana signature first',
         isValidSignature,
         '✓ Valid Solana signature',

@@ -4,7 +4,7 @@ import { createValidateCommand } from '../../util/insertUtil.js';
 
 export function register(context: vscode.ExtensionContext): void {
     context.subscriptions.push(createValidateCommand(
-        'blockchain-tools.btc.validateAddress',
+        'crypto-blockchain-tools.btc.validateAddress',
         'Select a Bitcoin address first',
         isValidAddress,
         '✓ Valid Bitcoin address',

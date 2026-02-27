@@ -1,6 +1,6 @@
 {
-  "name": "blockchain-tools",
-  "displayName": "Blockchain Tools",
+  "name": "crypto-blockchain-tools",
+  "displayName": "Crypto Blockchain Tools",
   "description": "Generate and validate Ethereum, Bitcoin, and Solana addresses, transaction hashes, and signatures.",
   "version": "0.0.1",
   "publisher": "ekinof",
@@ -31,65 +31,65 @@
   "contributes": {
     "commands": [
       {
-        "command": "blockchain-tools.openMenu",
+        "command": "crypto-blockchain-tools.openMenu",
         "title": "Blockchain Tools: Open Menu"
       },
       {
-        "command": "blockchain-tools.eth.generateAddress",
+        "command": "crypto-blockchain-tools.eth.generateAddress",
         "title": "Blockchain Tools: Generate ETH Address"
       },
       {
-        "command": "blockchain-tools.eth.checksumAddress",
+        "command": "crypto-blockchain-tools.eth.checksumAddress",
         "title": "Blockchain Tools: Checksum ETH Address"
       },
       {
-        "command": "blockchain-tools.eth.toggleCase",
+        "command": "crypto-blockchain-tools.eth.toggleCase",
         "title": "Blockchain Tools: Toggle ETH Address Case"
       },
       {
-        "command": "blockchain-tools.eth.generateTxHash",
+        "command": "crypto-blockchain-tools.eth.generateTxHash",
         "title": "Blockchain Tools: Generate ETH TxHash"
       },
       {
-        "command": "blockchain-tools.eth.validateTxHash",
+        "command": "crypto-blockchain-tools.eth.validateTxHash",
         "title": "Blockchain Tools: Validate ETH TxHash"
       },
       {
-        "command": "blockchain-tools.btc.generateAddress",
+        "command": "crypto-blockchain-tools.btc.generateAddress",
         "title": "Blockchain Tools: Generate BTC Address"
       },
       {
-        "command": "blockchain-tools.btc.validateAddress",
+        "command": "crypto-blockchain-tools.btc.validateAddress",
         "title": "Blockchain Tools: Validate BTC Address"
       },
       {
-        "command": "blockchain-tools.btc.generateTxHash",
+        "command": "crypto-blockchain-tools.btc.generateTxHash",
         "title": "Blockchain Tools: Generate BTC TxHash"
       },
       {
-        "command": "blockchain-tools.btc.validateTxHash",
+        "command": "crypto-blockchain-tools.btc.validateTxHash",
         "title": "Blockchain Tools: Validate BTC TxHash"
       },
       {
-        "command": "blockchain-tools.sol.generateAddress",
+        "command": "crypto-blockchain-tools.sol.generateAddress",
         "title": "Blockchain Tools: Generate SOL Address"
       },
       {
-        "command": "blockchain-tools.sol.validateAddress",
+        "command": "crypto-blockchain-tools.sol.validateAddress",
         "title": "Blockchain Tools: Validate SOL Address"
       },
       {
-        "command": "blockchain-tools.sol.generateSignature",
+        "command": "crypto-blockchain-tools.sol.generateSignature",
         "title": "Blockchain Tools: Generate SOL Signature"
       },
       {
-        "command": "blockchain-tools.sol.validateSignature",
+        "command": "crypto-blockchain-tools.sol.validateSignature",
         "title": "Blockchain Tools: Validate SOL Signature"
       }
     ],
     "keybindings": [
       {
-        "command": "blockchain-tools.openMenu",
+        "command": "crypto-blockchain-tools.openMenu",
         "key": "ctrl+alt+shift+b",
         "mac": "cmd+alt+shift+b",
         "when": "editorTextFocus"

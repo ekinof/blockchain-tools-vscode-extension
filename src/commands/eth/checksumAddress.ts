@@ -4,7 +4,7 @@ import { getSelectedText } from '../../util/insertUtil.js';
 
 export function register(context: vscode.ExtensionContext): void {
     context.subscriptions.push(
-        vscode.commands.registerCommand('blockchain-tools.eth.checksumAddress', () => {
+        vscode.commands.registerCommand('crypto-blockchain-tools.eth.checksumAddress', () => {
             const editor = vscode.window.activeTextEditor;
             if (!editor) { return; }
             const selected = getSelectedText(editor);

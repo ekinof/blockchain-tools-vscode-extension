@@ -327,7 +327,7 @@ git commit -m "feat: register ETH commands, keybinding, and settings in package.
 
 For each command below, create the file and register it in `extension.ts`.
 
-#### `blockchain-tools.eth.generateAddress`
+#### `crypto-blockchain-tools.eth.generateAddress`
 
 ```typescript
 // src/commands/eth/generateAddress.ts
@@ -337,7 +337,7 @@ import { getSettings, applySettings, insertAtCursor } from '../../util/insertUti
 
 export function register(context: vscode.ExtensionContext) {
   context.subscriptions.push(
-    vscode.commands.registerCommand('blockchain-tools.eth.generateAddress', () => {
+    vscode.commands.registerCommand('crypto-blockchain-tools.eth.generateAddress', () => {
       const editor = vscode.window.activeTextEditor;
       if (!editor) { return; }
       const text = applySettings(generateAddress(), getSettings());
@@ -347,7 +347,7 @@ export function register(context: vscode.ExtensionContext) {
 }
 ```
 
-#### `blockchain-tools.eth.checksumAddress`
+#### `crypto-blockchain-tools.eth.checksumAddress`
 
 ```typescript
 // src/commands/eth/checksumAddress.ts
@@ -357,7 +357,7 @@ import { getSelectedText } from '../../util/insertUtil';
 
 export function register(context: vscode.ExtensionContext) {
   context.subscriptions.push(
-    vscode.commands.registerCommand('blockchain-tools.eth.checksumAddress', () => {
+    vscode.commands.registerCommand('crypto-blockchain-tools.eth.checksumAddress', () => {
       const editor = vscode.window.activeTextEditor;
       if (!editor) { return; }
       const selected = getSelectedText(editor);
@@ -379,7 +379,7 @@ export function register(context: vscode.ExtensionContext) {
 }
 ```
 
-#### `blockchain-tools.eth.toggleCase`
+#### `crypto-blockchain-tools.eth.toggleCase`
 
 ```typescript
 // src/commands/eth/toggleCase.ts
@@ -389,7 +389,7 @@ import { getSelectedText, replaceSelection } from '../../util/insertUtil';
 
 export function register(context: vscode.ExtensionContext) {
   context.subscriptions.push(
-    vscode.commands.registerCommand('blockchain-tools.eth.toggleCase', () => {
+    vscode.commands.registerCommand('crypto-blockchain-tools.eth.toggleCase', () => {
       const editor = vscode.window.activeTextEditor;
       if (!editor) { return; }
       const selected = getSelectedText(editor);
@@ -407,7 +407,7 @@ export function register(context: vscode.ExtensionContext) {
 }
 ```
 
-#### `blockchain-tools.eth.generateTxHash`
+#### `crypto-blockchain-tools.eth.generateTxHash`
 
 ```typescript
 // src/commands/eth/generateTxHash.ts
@@ -417,7 +417,7 @@ import { getSettings, applySettings, insertAtCursor } from '../../util/insertUti
 
 export function register(context: vscode.ExtensionContext) {
   context.subscriptions.push(
-    vscode.commands.registerCommand('blockchain-tools.eth.generateTxHash', () => {
+    vscode.commands.registerCommand('crypto-blockchain-tools.eth.generateTxHash', () => {
       const editor = vscode.window.activeTextEditor;
       if (!editor) { return; }
       const text = applySettings(generateTxHash(), getSettings());
@@ -427,7 +427,7 @@ export function register(context: vscode.ExtensionContext) {
 }
 ```
 
-#### `blockchain-tools.eth.validateTxHash`
+#### `crypto-blockchain-tools.eth.validateTxHash`
 
 ```typescript
 // src/commands/eth/validateTxHash.ts
@@ -437,7 +437,7 @@ import { getSelectedText } from '../../util/insertUtil';
 
 export function register(context: vscode.ExtensionContext) {
   context.subscriptions.push(
-    vscode.commands.registerCommand('blockchain-tools.eth.validateTxHash', () => {
+    vscode.commands.registerCommand('crypto-blockchain-tools.eth.validateTxHash', () => {
       const editor = vscode.window.activeTextEditor;
       if (!editor) { return; }
       const selected = getSelectedText(editor);
@@ -513,7 +513,7 @@ interface ActionItem extends vscode.QuickPickItem {
 
 export function register(context: vscode.ExtensionContext) {
   context.subscriptions.push(
-    vscode.commands.registerCommand('blockchain-tools.openMenu', async () => {
+    vscode.commands.registerCommand('crypto-blockchain-tools.openMenu', async () => {
       const cfg = vscode.workspace.getConfiguration('blockchainTools');
       const enabled = cfg.get<{ eth: boolean; btc: boolean; sol: boolean }>(
         'enabledBlockchains', { eth: true, btc: true, sol: true }
@@ -524,27 +524,27 @@ export function register(context: vscode.ExtensionContext) {
 
       if (enabled.eth) {
         items.push({ label: 'Ethereum', kind: vscode.QuickPickItemKind.Separator });
-        items.push({ label: `${n++}. Generate ETH Address`,   command: 'blockchain-tools.eth.generateAddress' });
-        items.push({ label: `${n++}. Checksum ETH Address`,   command: 'blockchain-tools.eth.checksumAddress' });
-        items.push({ label: `${n++}. Toggle ETH Address Case`, command: 'blockchain-tools.eth.toggleCase' });
-        items.push({ label: `${n++}. Generate ETH TxHash`,    command: 'blockchain-tools.eth.generateTxHash' });
-        items.push({ label: `${n++}. Validate ETH TxHash`,    command: 'blockchain-tools.eth.validateTxHash' });
+        items.push({ label: `${n++}. Generate ETH Address`,   command: 'crypto-blockchain-tools.eth.generateAddress' });
+        items.push({ label: `${n++}. Checksum ETH Address`,   command: 'crypto-blockchain-tools.eth.checksumAddress' });
+        items.push({ label: `${n++}. Toggle ETH Address Case`, command: 'crypto-blockchain-tools.eth.toggleCase' });
+        items.push({ label: `${n++}. Generate ETH TxHash`,    command: 'crypto-blockchain-tools.eth.generateTxHash' });
+        items.push({ label: `${n++}. Validate ETH TxHash`,    command: 'crypto-blockchain-tools.eth.validateTxHash' });
       }
 
       if (enabled.btc) {
         items.push({ label: 'Bitcoin', kind: vscode.QuickPickItemKind.Separator });
-        items.push({ label: `${n++}. Generate BTC Address`,  command: 'blockchain-tools.btc.generateAddress' });
-        items.push({ label: `${n++}. Validate BTC Address`,  command: 'blockchain-tools.btc.validateAddress' });
-        items.push({ label: `${n++}. Generate BTC TxHash`,   command: 'blockchain-tools.btc.generateTxHash' });
-        items.push({ label: `${n++}. Validate BTC TxHash`,   command: 'blockchain-tools.btc.validateTxHash' });
+        items.push({ label: `${n++}. Generate BTC Address`,  command: 'crypto-blockchain-tools.btc.generateAddress' });
+        items.push({ label: `${n++}. Validate BTC Address`,  command: 'crypto-blockchain-tools.btc.validateAddress' });
+        items.push({ label: `${n++}. Generate BTC TxHash`,   command: 'crypto-blockchain-tools.btc.generateTxHash' });
+        items.push({ label: `${n++}. Validate BTC TxHash`,   command: 'crypto-blockchain-tools.btc.validateTxHash' });
       }
 
       if (enabled.sol) {
         items.push({ label: 'Solana', kind: vscode.QuickPickItemKind.Separator });
-        items.push({ label: `${n++}. Generate SOL Address`,   command: 'blockchain-tools.sol.generateAddress' });
-        items.push({ label: `${n++}. Validate SOL Address`,   command: 'blockchain-tools.sol.validateAddress' });
-        items.push({ label: `${n++}. Generate SOL Signature`, command: 'blockchain-tools.sol.generateSignature' });
-        items.push({ label: `${n++}. Validate SOL Signature`, command: 'blockchain-tools.sol.validateSignature' });
+        items.push({ label: `${n++}. Generate SOL Address`,   command: 'crypto-blockchain-tools.sol.generateAddress' });
+        items.push({ label: `${n++}. Validate SOL Address`,   command: 'crypto-blockchain-tools.sol.validateAddress' });
+        items.push({ label: `${n++}. Generate SOL Signature`, command: 'crypto-blockchain-tools.sol.generateSignature' });
+        items.push({ label: `${n++}. Validate SOL Signature`, command: 'crypto-blockchain-tools.sol.validateSignature' });
       }
 
       const selected = await vscode.window.showQuickPick(items, {
@@ -560,7 +560,7 @@ export function register(context: vscode.ExtensionContext) {
 }
 ```
 
-Register in `extension.ts` and add `blockchain-tools.openMenu` to `package.json` commands + keybinding.
+Register in `extension.ts` and add `crypto-blockchain-tools.openMenu` to `package.json` commands + keybinding.
 
 **Commit:**
 

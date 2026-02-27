@@ -4,7 +4,7 @@ import { createValidateCommand } from '../../util/insertUtil.js';
 
 export function register(context: vscode.ExtensionContext): void {
     context.subscriptions.push(createValidateCommand(
-        'blockchain-tools.btc.validateTxHash',
+        'crypto-blockchain-tools.btc.validateTxHash',
         'Select a Bitcoin transaction hash first',
         isValidTxHash,
         '✓ Valid Bitcoin transaction hash',
