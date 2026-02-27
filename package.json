@@ -3,6 +3,22 @@
   "displayName": "Blockchain Tools",
   "description": "Generate and validate Ethereum, Bitcoin, and Solana addresses, transaction hashes, and signatures.",
   "version": "0.0.1",
+  "publisher": "ekinof",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ekinof/blockchain-tools-vscode-extension"
+  },
+  "keywords": [
+    "blockchain",
+    "ethereum",
+    "bitcoin",
+    "solana",
+    "erc20",
+    "crypto",
+    "address",
+    "web3"
+  ],
   "engines": {
     "vscode": "^1.109.0"
   },
@@ -84,7 +100,11 @@
       "properties": {
         "blockchainTools.quoteStyle": {
           "type": "string",
-          "enum": ["none", "single", "double"],
+          "enum": [
+            "none",
+            "single",
+            "double"
+          ],
           "default": "none",
           "description": "Wrap generated values in quotes when inserting at cursor."
         },
@@ -95,30 +115,50 @@
         },
         "blockchainTools.btcAddressType": {
           "type": "string",
-          "enum": ["P2PKH", "P2SH", "Bech32"],
+          "enum": [
+            "P2PKH",
+            "P2SH",
+            "Bech32"
+          ],
           "default": "P2PKH",
           "description": "Bitcoin address format to generate (P2PKH = legacy 1..., P2SH = 3..., Bech32 = bc1...)."
         },
         "blockchainTools.enabledBlockchains": {
           "type": "object",
-          "default": { "eth": true, "btc": true, "sol": true },
+          "default": {
+            "eth": true,
+            "btc": true,
+            "sol": true
+          },
           "description": "Enable or disable blockchains in the Open Menu quick pick.",
           "properties": {
-            "eth": { "type": "boolean", "default": true },
-            "btc": { "type": "boolean", "default": true },
-            "sol": { "type": "boolean", "default": true }
+            "eth": {
+              "type": "boolean",
+              "default": true
+            },
+            "btc": {
+              "type": "boolean",
+              "default": true
+            },
+            "sol": {
+              "type": "boolean",
+              "default": true
+            }
           }
         }
       }
     }
   },
   "scripts": {
-    "vscode:prepublish": "pnpm run compile",
+    "vscode:prepublish": "node esbuild.mjs --production",
     "compile": "tsc -p ./",
+    "bundle": "node esbuild.mjs",
     "watch": "tsc -watch -p ./",
     "pretest": "pnpm run compile && pnpm run lint",
     "lint": "eslint src",
-    "test": "vscode-test"
+    "test": "vscode-test",
+    "package": "vsce package --no-dependencies",
+    "publish": "vsce publish --no-dependencies"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.10",
@@ -126,6 +166,8 @@
     "@types/vscode": "^1.109.0",
     "@vscode/test-cli": "^0.0.12",
     "@vscode/test-electron": "^2.5.2",
+    "@vscode/vsce": "^3.7.1",
+    "esbuild": "^0.27.3",
     "eslint": "^9.39.2",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.54.0"
